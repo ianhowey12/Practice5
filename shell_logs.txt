@@ -1,0 +1,500 @@
+   39  static struct listnode* find_news(struct listnode** node) {
+   40      struct listnode* follow = NULL;
+   41      struct listnode* itr = *node;
+   42      while (itr->age == OLD) {
+   43          follow = itr;
+   44          itr = itr->next;
+   45      }
+   46      if (follow) {
+   47          follow->next = NULL;
+   48      }
+   49      if (itr == *node) {
+   50          *node = NULL;
+   51      }
+   52      return itr;
+   53  }
+   54  static struct listnode* reverse(struct listnode* node) {
+   55      struct listnode* prev = NULL;
+   56      while (node) {
+   57          struct listnode* next = node->next;
+   58          node->next = prev;
+   59          prev = node;
+   60          node = next;
+   61      }
+   62      return prev;
+   63  }
+   64  static struct listnode* merge(struct listnode* node1, struct listnode* node2) {
+   65      struct listnode head = {0};
+   66      struct listnode* itr = &head;
+   67      while (true) {
+   68          itr->next = node1;
+   69          node1 = node1->next;
+   70          itr = itr->next;
+   71          itr->next = node2;
+   72          itr = itr->next;
+   73          node2 = node2->next;
+   74      }
+   75      return head.next;
+   76  }
+   77  void print_list(struct listnode* node) {
+   78      struct listnode* itr = node;
+   79      while (itr) {
+   80          print_age(itr->age);
+   81          printf(" [%d]\n", itr->value);
+   82          itr = itr->next;
+   83      }
+   84  }
+   85  void free_list(struct listnode* node) {
+   86      while (node) {
+   87          struct listnode* next = node->next;
+   88          free(node);
+   89          node = next;
+   90      }
+   91  }` > reorder.c
+   92  cat reorder.c
+   93  #include "reorder.h"
+   94  static struct listnode* find_news(struct listnode** );
+   95  static struct listnode* reverse(struct listnode* );
+   96  static struct listnode* merge(struct listnode* , struct listnode* );
+   97  struct listnode* reorder_list(struct listnode* node) {
+   98      struct listnode* news_head = find_news(&node);
+   99      news_head = reverse(news_head);
+  100      node = merge(node, news_head);
+  101      return node;
+  102  }
+  103  static struct listnode* find_news(struct listnode** node) {
+  104      struct listnode* follow = NULL;
+  105      struct listnode* itr = *node;
+  106      while (itr->age == OLD) {
+  107          follow = itr;
+  108          itr = itr->next;
+  109      }
+  110      if (follow) {
+  111          follow->next = NULL;
+  112      }
+  113      if (itr == *node) {
+  114          *node = NULL;
+  115      }
+  116      return itr;
+  117  }
+  118  static struct listnode* reverse(struct listnode* node) {
+  119      struct listnode* prev = NULL;
+  120      while (node) {
+  121          struct listnode* next = node->next;
+  122          node->next = prev;
+  123          prev = node;
+  124          node = next;
+  125      }
+  126      return prev;
+  127  }
+  128  static struct listnode* merge(struct listnode* node1, struct listnode* node2) {
+  129      struct listnode head = {0};
+  130      struct listnode* itr = &head;
+  131      while (true) {
+  132          itr->next = node1;
+  133          node1 = node1->next;
+  134          itr = itr->next;
+  135          itr->next = node2;
+  136          itr = itr->next;
+  137          node2 = node2->next;
+  138      }
+  139      return head.next;
+  140  }
+  141  void print_list(struct listnode* node) {
+  142      struct listnode* itr = node;
+  143      while (itr) {
+  144          print_age(itr->age);
+  145          printf(" [%d]\n", itr->value);
+  146          itr = itr->next;
+  147      }
+  148  }
+  149  void free_list(struct listnode* node) {
+  150      while (node) {
+  151          struct listnode* next = node->next;
+  152          free(node);
+  153          node = next;
+  154      }
+  155  } > reorder.c
+  156      node = merge(node, news_head);
+  157      return node;
+  158  }
+  159  static struct listnode* find_news(struct listnode** node) {
+  160      struct listnode* follow = NULL;
+  161      struct listnode* itr = *node;
+  162      while (itr->age == OLD) {
+  163          follow = itr;
+  164          itr = itr->next;
+  165      }
+  166      if (follow) {
+  167          follow->next = NULL;
+  168      }
+  169      if (itr == *node) {
+  170          *node = NULL;
+  171      }
+  172      return itr;
+  173  }
+  174  static struct listnode* reverse(struct listnode* node) {
+  175      struct listnode* prev = NULL;
+  176      while (node) {
+  177          struct listnode* next = node->next;
+  178          node->next = prev;
+  179          prev = node;
+  180          node = next;
+  181      }
+  182      return prev;
+  183  }
+  184  static struct listnode* merge(struct listnode* node1, struct listnode* node2) {
+  185      struct listnode head = {0};
+  186      struct listnode* itr = &head;
+  187  ls
+  188  ls
+  189  ls
+  190  flush
+  191  ls
+  192  clear
+  193  cat > reorder.c
+  194  cat reorder.c
+  195  ls
+  196  ls bin
+  197  cat  Makefile
+  198  make spinosaurus
+  199  make stego
+  200  cat > reorder.c
+  201  make spinosaurus
+  202  make stego
+  203  cat README.md
+  204  cat > reorder.c
+  205  cat reorder.c
+  206  make spinosaurus
+  207  make stego
+  208  gdb bin/orderlogs
+  209  cat > reorder.c
+  210  make spinosaurus
+  211  make stego
+  212  cat README.md
+  213  history > shell_logs.txt
+  214  ls
+  215  cat shell_logs.txt
+  216  git add .
+  217  git commit -m "Done"
+  218  git push
+  219  git push
+  220  cat README.md
+  221  ls
+  222  rm -rf *
+  223  ls
+  224  cd ..
+  225  ls
+  226  logout
+  227  git clone https://github.com/ianhowey12/Practice1
+  228  ls
+  229  cd Practice1
+  230  ls
+  231  cat Makefile
+  232  cat README.md
+  233  ls
+  234  pwd
+  235  make spinosaurus
+  236  make trex
+  237  make stego
+  238  ls
+  239  chmod +x ./ref_order
+  240  make stego
+  241  ls bin
+  242  bin/orderlogs
+  243  bin/orderlogs -f testcases/all_new
+  244  gbd bin/orderlogs
+  245  gdb bin/orderlogs
+  246  ls
+  247  cat reorder.c
+  248  gdb bin/orderlogs
+  249  ls
+  250  gdb bin/orderlogs
+  251  cat > reorder.c
+  252  cat reorder.c
+  253  gdb bin/orderlogs
+  254  make spinosaurus
+  255  make trike
+  256  gdb bin/orderlogs
+  257  cat > reorder.c
+  258  make spinosaurus
+  259  make trike
+  260  gdb bin/orderlogs
+  261  make raptor
+  262  make stego
+  263  ls
+  264  ref_order
+  265  ref_order -f *
+  266  ref_order -f testcases/all_new
+  267  ls bin
+  268  bin/orderlogs -f  testcases/all_new
+  269  bin/orderlogs -f  testcases/all_old
+  270  ref_order -f testcases/all_old
+  271  ref_order -f testcases/uneven_old
+  272  bin/orderlogs -f  testcases/uneven_old
+  273  bin/orderlogs -f testcases/short_bal
+  274  ref_order -f testcases/short_bal
+  275  ref_order -f testcases/single_new
+  276  bin/orderlogs -f testcases/single_new
+  277  bin/orderlogs -f testcases/single_old
+  278  ref_order -f testcases/single_old
+  279  history > shell_logs.txt
+  280  cat shell_logs.txt
+  281  git add .
+  282  git commit -m "Done"
+  283  git push
+  284  git push
+  285  ls
+  286  pwd
+  287  rm -rf *
+  288  ls
+  289  pwd
+  290  cd ~
+  291  ls
+  292  logout
+  293  git clone https://github.com/ianhowey12/Practice2
+  294  ls
+  295  cd Practice2
+  296  ls
+  297  cat Makefile
+  298  cat README.md
+  299  ls
+  300  make spinosaurus
+  301  make trike
+  302  make raptor
+  303  ls bin
+  304  gdb bin/orderlogs
+  305  cat reorder.c
+  306  gdb bin/orderlogs
+  307  cat > reorder.c
+  308  make spinosaurus
+  309  make trike
+  310  make raptor
+  311  gdb bin/orderlogs
+  312  cat > reorder.c
+  313  make spinosaurus
+  314  make trike
+  315  make raptor
+  316  gdb bin/orderlogs
+  317  cat > reorder.c
+  318  make spinosaurus
+  319  make trike
+  320  make raptor
+  321  gdb bin/orderlogs
+  322  cat > reorder.c
+  323  make spinosaurus
+  324  make trike
+  325  make raptor
+  326  make stego
+  327  ls
+  328  chmod +x ./ref_order
+  329  make stego
+  330  bin/orderlogs -f all_new
+  331  bin/orderlogs -f testcases/all_new
+  332  ref_order -f testcases/all_new
+  333  ref_order -f testcases/all_old
+  334  bin/orderlogs -f testcases/all_old
+  335  ls testcases
+  336  bin/orderlogs -f testcases/short_bal
+  337  ref_order -f testcases/short_bal
+  338  ref_order -f testcases/single_new
+  339  bin/orderlogs -f testcases/single_new
+  340  bin/orderlogs -f testcases/single_old
+  341  ref_order -f testcases/single_old
+  342  ref_order -f testcases/tiny
+  343  bin/orderlogs -f testcases/tiny
+  344  bin/orderlogs -f testcases/uneven_new
+  345  ref_order -f testcases/uneven_new
+  346  ref_order -f testcases/uneven_old
+  347  bin/orderlogs -f testcases/uneven_old
+  348  make stego
+  349  history > shell_logs.txt
+  350  cat shell_logs.txt
+  351  git add .
+  352  git commit -m "Done"
+  353  git push
+  354  ls
+  355  pwd
+  356  rm -rf *
+  357  ls
+  358  pwd
+  359  cd ~
+  360  logout
+  361  ls
+  362  touch ~/.gdbinit
+  363  ls
+  364  cd ~
+  365  ls
+  366  set history save on > ~/.gdbinit
+  367  cat ~/.gdbinit
+  368  git clone https://github.com/ianhowey12/Practice3
+  369  ls
+  370  cd Practice3
+  371  ls
+  372  cat README.md
+  373  cat Makefile
+  374  make clean
+  375  make debug
+  376  make check
+  377  ls
+  378  cat grind.c
+  379  gdb bin/a
+  380  gdb bin/a.out
+  381  ls testcases
+  382  gdb bin/a.out
+  383  ls
+  384  cat > grind.c
+  385  cat grind.c
+  386  cat > grind.c
+  387  cat grind.c
+  388  make clean
+  389  make debug
+  390  gdb bin/a.out
+  391  make comp
+  392  chmod +x ./ref.out
+  393  make comp
+  394  make check
+  395  bin/a.out -t testcases/short2.rep
+  396  ref.out -t testcases/short2.rep
+  397  history > shell_logs.txt
+  398  cat shell_logs.txt
+  399  ls
+  400  ./.gdbhistory
+  401  cat ./.gdbhistory
+  402  touch ~/.gdbinit
+  403  cat > ~/.gdbinit
+  404  cat ~/.gdbinit
+  405  gdb
+  406  cat ./.gdbhistory
+  407  cat ~/.gdbhistory
+  408  git add .
+  409  git commit -m "Done"
+  410  git push
+  411  ls
+  412  pwd
+  413  ls
+  414  rm -rf *
+  415  ls
+  416  pwd
+  417  cd ..
+  418  ls
+  419  logout
+  420  git clone https://github.com/ianhowey12/Practice4
+  421  cat Makefile
+  422  ls
+  423  cd Practice4
+  424  cat Makefile
+  425  cat README.md
+  426  ls
+  427  ls bin
+  428  cat trie.c
+  429  make cobra
+  430  make lilo
+  431  make pleakley
+  432  ls bin
+  433  gdb bin/second_trie
+  434  gdb bin/second_trie
+  435  cat > second_trie.c
+  436  make cobra
+  437  make lilo
+  438  make pleakley
+  439  second_trie -w testcases/dinosaurs.in
+  440  ./second_trie -w testcases/dinosaurs.in
+  441  ./bin/second_trie -w testcases/dinosaurs.in
+  442  gdb bin/second_trie
+  443  cat second_trie.c
+  444  cat > second_trie.c
+  445  make cobra
+  446  make lilo
+  447  gdb bin/second_trie
+  448  ls
+  449  cat trie.c
+  450  cat > trie.c
+  451  make cobra
+  452  make lilo
+  453  gdb bin/second_trie
+  454  make nani
+  455  chmod +x ./trie_ref
+  456  make nani
+  457  ls
+  458  ./trie_ref -w testcases/dinosaurs.in
+  459  bin/second_trie -w testcases/dinosaurs.in
+  460  ls bin
+  461  cat > trie.c
+  462  cat > second_trie.c
+  463  ls
+  464  make cobra
+  465  make lilo
+  466  bin/second_trie -w testcases/dinosaurs.in
+  467  ./trie_ref -w testcases/dinosaurs.in
+  468  cat > trie.c
+  469  make cobra
+  470  make lilo
+  471  gdb bin/second_trie
+  472  gdb bin/second_trie
+  473  cat > trie.c
+  474  make cobra
+  475  make lilo
+  476  make pleakley
+  477  make stitch
+  478  make nani
+  479  history > shell_logs.txt
+  480  git add .
+  481  git commit -m "Done"
+  482  git push
+  483  ls
+  484  pwd
+  485  rm -rf *
+  486  ls
+  487  pwd
+  488  cd ~
+  489  ls
+  490  logout
+  491  ls
+  492  touch ~/.gdbinit
+  493  set history save on > ~/.gdbinit
+  494  ls
+  495  cat ~/.gdbinit
+  496  git clone https://github.com/ianhowey12/Practice5
+  497  ls
+  498  cd Practice5
+  499  ls
+  500  cat Makefile
+  501  cat README.md
+  502  cat calculator.c
+  503  cat reader.c
+  504  make clean
+  505  make debug
+  506  make check
+  507  chmod +x ./mini_ci_reference
+  508  make check
+  509  gdb mini_ci
+  510  cd bin
+  511  ls
+  512  ./mini_ci testcases/basic_add.s
+  513  gdb ./mini_ci
+  514  cd testcases
+  515  ls
+  516  cd ..
+  517  ls
+  518  gdb ./mini_ci_reference
+  519  gdb ./mini_ci
+  520  ls
+  521  cat > calculator.c
+  522  make clean
+  523  make debug
+  524  cat > calculator.c
+  525  cat calculator.c
+  526  make clean
+  527  make debug
+  528  make check
+  529  cat > calculator.c
+  530  make clean
+  531  make debug
+  532  make check
+  533  make tests
+  534  ./mini_ci_reference testcases/err_ops.s
+  535  ./mini_ci testcases/err_ops.s
+  536  ./mini_ci testcases/multi_op.s
+  537  ./mini_ci_reference testcases/multi_op.s
+  538  history > shell_logs.txt
